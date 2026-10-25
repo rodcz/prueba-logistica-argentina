@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Antigravity" version="24.0.0">
+  <diagram name="1. Arquitectura de Infraestructura" id="page-infra">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="950" background="#F8FAFC">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p1_header" value="&lt;b&gt;ARQUITECTURA DE INFRAESTRUCTURA Y STACK TECNOLÓGICO&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#64748B;font-weight:normal;&quot;&gt;Orquestación con Docker Compose, aislamiento de red privada, persistencia de volúmenes y puertos de servicio&lt;/span&gt;" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontSize=15;fontColor=#0F172A;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1420" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="host_box" value="&lt;b&gt;MÁQUINA ANFITRIONA (HOST: Windows 11 + WSL 2 Ubuntu Linux)&lt;/b&gt;" style="swimlane;startSize=28;rounded=1;arcSize=6;html=1;fillColor=#F8FAFC;strokeColor=#94A3B8;fontSize=13;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="40" y="85" width="1420" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="docker_net_box" value="&lt;b&gt;RED PRIVADA DOCKER (bridge: logistica_net) — Comunicación por Service Discovery DNS&lt;/b&gt;" style="swimlane;startSize=26;rounded=1;arcSize=6;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontSize=12;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="70" y="125" width="1360" height="485" as="geometry" />
+        </mxCell>
+        <mxCell id="c_web" value="&lt;b&gt;CONTENEDOR 1: airflow_webserver&lt;/b&gt;&lt;br&gt;&lt;i&gt;Imagen custom: Airflow 2.9 (Debian/Python 3.10)&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• &lt;b&gt;Función:&lt;/b&gt; Interfaz Web gráfica interactiva&lt;br&gt;• &lt;b&gt;Puerto contenedor:&lt;/b&gt; 8080&lt;br&gt;• &lt;b&gt;Operación:&lt;/b&gt; Disparo manual (Botón Play)&lt;br&gt;• &lt;b&gt;Monitoreo:&lt;/b&gt; Vista de grafos, árbol y logs en vivo&lt;br&gt;• &lt;b&gt;Seguridad:&lt;/b&gt; Autenticación RBAC (admin / admin)&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=2;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="100" y="175" width="340" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="c_sch" value="&lt;b&gt;CONTENEDOR 2: airflow_scheduler&lt;/b&gt;&lt;br&gt;&lt;i&gt;Imagen custom: Airflow 2.9 + dbt-postgres + CLI&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• &lt;b&gt;Función:&lt;/b&gt; Motor de orquestación y cómputo ELT&lt;br&gt;• &lt;b&gt;Ejecutor:&lt;/b&gt; LocalExecutor / PythonOperator&lt;br&gt;• &lt;b&gt;CLI dbt:&lt;/b&gt; Compila y corre dbt run / dbt test&lt;br&gt;• &lt;b&gt;Ingesta:&lt;/b&gt; Ejecuta scripts Python con Truncate &amp; Load&lt;br&gt;• &lt;b&gt;Reporte:&lt;/b&gt; Genera reporte HTML interactivo con Leaflet&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=2;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="520" y="175" width="400" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pg" value="&lt;b&gt;CONTENEDOR 3: postgres_warehouse&lt;/b&gt;&lt;br&gt;&lt;i&gt;Imagen base: postgres:15-alpine&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• &lt;b&gt;Función:&lt;/b&gt; Data Warehouse Relacional OLAP&lt;br&gt;• &lt;b&gt;Puerto interno:&lt;/b&gt; 5432 (TCP)&lt;br&gt;• &lt;b&gt;DB warehouse_db:&lt;/b&gt; Esquemas raw y analytics&lt;br&gt;• &lt;b&gt;DB airflow_db:&lt;/b&gt; Metadatos de ejecución de DAGs&lt;br&gt;• &lt;b&gt;Inicialización:&lt;/b&gt; scripts/init_db.sql automatizado&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=2;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="175" width="390" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="mount_airflow" value="&lt;b&gt;VOLÚMENES MONTADOS (Bind Mounts WSL 2 → Contenedores)&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• &lt;b&gt;./dags :&lt;/b&gt; /opt/airflow/dags (Sincronización en caliente de DAGs)&lt;br&gt;• &lt;b&gt;./dbt_project :&lt;/b&gt; /opt/dbt (Modelos SQL, seeds y schema.yml)&lt;br&gt;• &lt;b&gt;./scripts :&lt;/b&gt; /opt/scripts (Scripts de extracción y reporte HTML)&lt;br&gt;• &lt;b&gt;./output :&lt;/b&gt; /opt/output (Persistencia del reporte final .html)&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#4F46E5;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="520" y="440" width="400" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="vol_postgres" value="&lt;b&gt;VOLUMEN PERSISTENTE DOCKER&lt;/b&gt;&lt;br&gt;&lt;i&gt;postgres_data : /var/lib/postgresql/data&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• Persiste tablas raw y analytics en el disco físico&lt;br&gt;• Sobrevive al reinicio o destrucción de contenedores&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FEF08A;strokeColor=#CA8A04;strokeWidth=1.5;fontSize=12;fontColor=#854D0E;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="440" width="390" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="acc_web" value="&lt;b&gt;NAVEGADOR WEB (Usuario / Reclutador)&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;font-size:11px;color:#1E293B;&quot;&gt;URL: &lt;b&gt;http://localhost:8080&lt;/b&gt;&lt;br&gt;Mapeo de Puerto: &lt;b&gt;8080 : 8080&lt;/b&gt;&lt;br&gt;Uso: Login admin/admin y botón Play en DAG&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;fontSize=12;fontColor=#065F46;" vertex="1" parent="1">
+          <mxGeometry x="100" y="680" width="340" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="acc_cli" value="&lt;b&gt;TERMINAL DESARROLLADOR (WSL 2 Ubuntu)&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;font-size:11px;color:#1E293B;&quot;&gt;Comando: &lt;b&gt;docker compose up -d&lt;/b&gt;&lt;br&gt;Directorio: /home/rodrigo/prueba-logistica-argentina&lt;br&gt;Control de versiones: Git + Conventional Commits&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#4B5563;strokeWidth=1.5;fontSize=12;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="520" y="680" width="400" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="acc_sql" value="&lt;b&gt;CLIENTE SQL EXTERNO (DBeaver / pgAdmin / DataGrip)&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;font-size:11px;color:#1E293B;&quot;&gt;Host: &lt;b&gt;localhost:5432&lt;/b&gt; | User: &lt;b&gt;postgres&lt;/b&gt;&lt;br&gt;Mapeo de Puerto: &lt;b&gt;5432 : 5432&lt;/b&gt;&lt;br&gt;Bases: warehouse_db (Tablas analíticas) / airflow_db&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;fontSize=12;fontColor=#065F46;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="680" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_sch_pg" value="&lt;b&gt;TCP 5432&lt;/b&gt; (warehouse_db y airflow_db)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2563EB;exitX=1;exitY=0.35;entryX=0;entryY=0.35;" edge="1" source="c_sch" target="c_pg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_web_pg" value="Lee estados de ejecución" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#64748B;dashed=1;exitX=0.5;exitY=0;entryX=0.5;entryY=0;" edge="1" source="c_web" target="c_pg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_sch_mount" value="Lee DAGs / Escribe reporte" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4F46E5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" source="c_sch" target="mount_airflow" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_pg_vol" value="Persiste archivos de datos" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#CA8A04;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" source="c_pg" target="vol_postgres" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_acc_web" value="&lt;b&gt;HTTP Port 8080:8080&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#059669;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" source="acc_web" target="c_web" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_acc_cli" value="Modifica código / Ejecuta docker compose" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4B5563;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" source="acc_cli" target="mount_airflow" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_acc_sql" value="&lt;b&gt;TCP Port 5432:5432&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#059669;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" source="acc_sql" target="c_pg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="2. Pipeline de Datos ELT" id="page-pipeline">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1750" pageHeight="880" background="#F8FAFC">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p2_header" value="&lt;b&gt;PIPELINE DE DATOS ELT: DE FUENTES PÚBLICAS A REPORTE EJECUTIVO&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#64748B;font-weight:normal;&quot;&gt;Flujo secuencial desacoplado: Ingesta Idempotente → Capa Raw (Postgres) → Transformación dbt (Staging, Curated, Marts) → Reporte HTML&lt;/span&gt;" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;fontSize=15;fontColor=#0F172A;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1670" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bg_col1" value="&lt;b&gt;1. FUENTES ABIERTAS OFICIALES&lt;/b&gt;" style="swimlane;startSize=28;rounded=1;arcSize=6;html=1;fillColor=#F8FAFC;strokeColor=#94A3B8;fontSize=12;fontColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="40" y="85" width="290" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="bg_col2" value="&lt;b&gt;2. INGESTA AIRFLOW (Python)&lt;/b&gt;" style="swimlane;startSize=28;rounded=1;arcSize=6;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontSize=12;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="360" y="85" width="290" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="bg_col3" value="&lt;b&gt;3. DATA WAREHOUSE - CAPA RAW&lt;/b&gt;" style="swimlane;startSize=28;rounded=1;arcSize=6;html=1;fillColor=#F3F4F6;strokeColor=#4B5563;fontSize=12;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="680" y="85" width="290" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="bg_col4" value="&lt;b&gt;4. MODELADO Y TRANSFORMACIÓN dbt CORE&lt;/b&gt;" style="swimlane;startSize=28;rounded=1;arcSize=6;html=1;fillColor=#FAF5FF;strokeColor=#7C3AED;fontSize=12;fontColor=#581C87;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="85" width="410" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="bg_col5" value="&lt;b&gt;5. CONSUMO &amp; REPORTING&lt;/b&gt;" style="swimlane;startSize=28;rounded=1;arcSize=6;html=1;fillColor=#F0FDF4;strokeColor=#16A34A;fontSize=12;fontColor=#14532D;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="85" width="270" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="src_ign" value="&lt;b&gt;IGN Georef API (Argentina)&lt;/b&gt;&lt;br&gt;&lt;i&gt;Servicio REST / CSV Datos Abiertos&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• 528 departamentos oficiales&lt;br&gt;• ID oficial INDEC de 5 dígitos&lt;br&gt;• Coordenadas Centroide (Lat/Lon)&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;strokeWidth=1.5;fontSize=12;fontColor=#0369A1;" vertex="1" parent="1">
+          <mxGeometry x="65" y="140" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="src_indec" value="&lt;b&gt;INDEC / RENAPER (Población)&lt;/b&gt;&lt;br&gt;&lt;i&gt;Censo Nacional de Población 2022&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• Población total por departamento&lt;br&gt;• Clave de enlace: departamento_id&lt;br&gt;• Total oficial: 46.234.830 hab.&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;strokeWidth=1.5;fontSize=12;fontColor=#0369A1;" vertex="1" parent="1">
+          <mxGeometry x="65" y="340" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="src_enacom" value="&lt;b&gt;ENACOM (Conectividad)&lt;/b&gt;&lt;br&gt;&lt;i&gt;Serie de Acceso a Internet Fijo&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• Penetración de Internet por provincia&lt;br&gt;• % de hogares conectados&lt;br&gt;• Factor para Demanda Digital (IADH)&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;strokeWidth=1.5;fontSize=12;fontColor=#0369A1;" vertex="1" parent="1">
+          <mxGeometry x="65" y="540" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ing_ign" value="&lt;b&gt;extract_ign_departamentos()&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• Descarga programática HTTP GET&lt;br&gt;• Validación status 200 y headers&lt;br&gt;• Validación de 528 registros esperados&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#2563EB;strokeWidth=1.5;fontSize=12;fontColor=#1E40AF;" vertex="1" parent="1">
+          <mxGeometry x="385" y="140" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ing_indec" value="&lt;b&gt;extract_indec_poblacion()&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• Descarga CSV RENAPER/Censo 2022&lt;br&gt;• Sanitización y verificación de nulos&lt;br&gt;• Suma de control de población&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#2563EB;strokeWidth=1.5;fontSize=12;fontColor=#1E40AF;" vertex="1" parent="1">
+          <mxGeometry x="385" y="340" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ing_enacom" value="&lt;b&gt;extract_enacom_conectividad()&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• Descarga CSV de penetración ENACOM&lt;br&gt;• Conversión comas decimales a float&lt;br&gt;• Mapeo a código provincia INDEC&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#2563EB;strokeWidth=1.5;fontSize=12;fontColor=#1E40AF;" vertex="1" parent="1">
+          <mxGeometry x="385" y="540" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="raw_ign" value="&lt;b&gt;raw.ign_departamentos&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• &lt;b&gt;id:&lt;/b&gt; VARCHAR(5) [PK]&lt;br&gt;• &lt;b&gt;nombre:&lt;/b&gt; VARCHAR(100)&lt;br&gt;• &lt;b&gt;provincia_id:&lt;/b&gt; VARCHAR(2)&lt;br&gt;• &lt;b&gt;lat, lon:&lt;/b&gt; NUMERIC(10,6)&lt;br&gt;&lt;i&gt;Estrategia: Truncate &amp; Load&lt;/i&gt;&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;size=10;fillColor=#E5E7EB;strokeColor=#4B5563;strokeWidth=1.5;fontSize=12;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="705" y="140" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="raw_indec" value="&lt;b&gt;raw.indec_poblacion&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• &lt;b&gt;departamento_id:&lt;/b&gt; VARCHAR(5) [PK]&lt;br&gt;• &lt;b&gt;provincia_id:&lt;/b&gt; VARCHAR(2)&lt;br&gt;• &lt;b&gt;poblacion:&lt;/b&gt; BIGINT&lt;br&gt;&lt;i&gt;Estrategia: Truncate &amp; Load&lt;/i&gt;&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;size=10;fillColor=#E5E7EB;strokeColor=#4B5563;strokeWidth=1.5;fontSize=12;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="705" y="340" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="raw_enacom" value="&lt;b&gt;raw.enacom_conectividad&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• &lt;b&gt;provincia_id:&lt;/b&gt; VARCHAR(2) [PK]&lt;br&gt;• &lt;b&gt;penetracion_hogares:&lt;/b&gt; NUMERIC(5,2)&lt;br&gt;• &lt;b&gt;accesos_totales:&lt;/b&gt; BIGINT&lt;br&gt;&lt;i&gt;Estrategia: Truncate &amp; Load&lt;/i&gt;&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;size=10;fillColor=#E5E7EB;strokeColor=#4B5563;strokeWidth=1.5;fontSize=12;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="705" y="540" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="dbt_stg" value="&lt;b&gt;CAPA STAGING (Limpieza, Tipado y Contratos)&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• &lt;b&gt;stg_ign_departamentos.sql:&lt;/b&gt; LPAD(id, 5, '0'), normaliza nombres&lt;br&gt;• &lt;b&gt;stg_indec_poblacion.sql:&lt;/b&gt; LPAD(departamento_id, 5, '0'), casting BIGINT&lt;br&gt;• &lt;b&gt;stg_enacom_conectividad.sql:&lt;/b&gt; LPAD(provincia_id, 2, '0'), penetracion_pct&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=12;fontColor=#581C87;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="135" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="dbt_int" value="&lt;b&gt;CAPA CURATED / INTERMEDIATE (Enlace Territorial Belcorp)&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• &lt;b&gt;seed_departamentos_regiones.csv:&lt;/b&gt; AMBA, Pampeana, Cuyo, NOA, NEA, Patagonia&lt;br&gt;• &lt;b&gt;int_departamentos_curated.sql:&lt;/b&gt; Cruce natural exacto por cod_departamento (5 dígitos)&lt;br&gt;• &lt;b&gt;Banderas operativas:&lt;/b&gt; es_territorio_continental, requiere_logistica_especial&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#DDD6FE;strokeColor=#6D28D9;strokeWidth=1.5;fontSize=12;fontColor=#4C1D95;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="260" width="370" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="dbt_marts" value="&lt;b&gt;CAPA MARTS (Star Schema para Análisis y Visualización)&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• &lt;b&gt;dim_departamento:&lt;/b&gt; cod_depto, depto, prov, region, lat, lon, flags de entrega&lt;br&gt;• &lt;b&gt;fct_demanda_logistica:&lt;/b&gt; población, ranking nacional, % provincial, cuota Pareto&lt;br&gt;• &lt;b&gt;rep_resumen_ejecutivo:&lt;/b&gt; Tabla desnormalizada con respuestas a P1, P2, P3 y P4&lt;br&gt;• &lt;b&gt;Métrica Belcorp (IADH):&lt;/b&gt; Población × Penetración Internet (Hogares alcanzables)&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#CFFAFE;strokeColor=#0891B2;strokeWidth=1.5;fontSize=12;fontColor=#164E63;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="395" width="370" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="dbt_tests" value="&lt;b&gt;SUITE DE CALIDAD: dbt test (Auditoría Automatizada)&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• &lt;b&gt;Integridad:&lt;/b&gt; unique y not_null en claves primarias (528 departamentos)&lt;br&gt;• &lt;b&gt;Referencial:&lt;/b&gt; relationships entre fct_demanda y dim_departamento&lt;br&gt;• &lt;b&gt;Completitud:&lt;/b&gt; Validación suma 100.0% de cuotas poblacionales&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;strokeWidth=1.5;fontSize=12;fontColor=#991B1B;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="550" width="370" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="out_report" value="&lt;b&gt;ENTREGABLE FINAL: REPORTE EJECUTIVO&lt;/b&gt;&lt;br&gt;&lt;i&gt;output/reporte_logistica_argentina.html&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• &lt;b&gt;Dashboard Interactivo Standalone&lt;/b&gt; (Sin dependencias de servidor)&lt;br&gt;&lt;br&gt;• &lt;b&gt;4 Tarjetas KPI Demográficos y Cobertura&lt;/b&gt;&lt;br&gt;• &lt;b&gt;Mapa Interactivo Leaflet.js&lt;/b&gt; con Top 10 y popups de geolocalización&lt;br&gt;• &lt;b&gt;Tabla P1:&lt;/b&gt; Top 10 departamentos más poblados y coordenadas exactas&lt;br&gt;• &lt;b&gt;Tabla P2:&lt;/b&gt; Distribución del 100% de población por provincia&lt;br&gt;• &lt;b&gt;Análisis P3:&lt;/b&gt; Concentración urbana / Análisis Pareto&lt;br&gt;• &lt;b&gt;Métrica P4:&lt;/b&gt; Índice de Alcance Digital de Hogares (IADH)&lt;br&gt;• &lt;b&gt;Auditoría de Calidad:&lt;/b&gt; 528/528 departamentos cargados (0 nulos, 0 duplicados)&lt;/div&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=2;fontSize=12;fontColor=#065F46;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="175" width="230" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_src1_ing1" value="HTTP GET" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0284C7;" edge="1" source="src_ign" target="ing_ign" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_src2_ing2" value="HTTP GET" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0284C7;" edge="1" source="src_indec" target="ing_indec" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_src3_ing3" value="HTTP GET" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0284C7;" edge="1" source="src_enacom" target="ing_enacom" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_ing1_raw1" value="Truncate &amp; Load" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2563EB;" edge="1" source="ing_ign" target="raw_ign" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_ing2_raw2" value="Truncate &amp; Load" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2563EB;" edge="1" source="ing_indec" target="raw_indec" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_ing3_raw3" value="Truncate &amp; Load" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2563EB;" edge="1" source="ing_enacom" target="raw_enacom" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_raw1_stg" value="source(&quot;raw&quot;, ...)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4B5563;exitX=1;exitY=0.5;entryX=0;entryY=0.3;" edge="1" source="raw_ign" target="dbt_stg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_raw2_stg" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4B5563;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" source="raw_indec" target="dbt_stg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_raw3_stg" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4B5563;exitX=1;exitY=0.5;entryX=0;entryY=0.7;" edge="1" source="raw_enacom" target="dbt_stg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_stg_int" value="ref()" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7C3AED;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" source="dbt_stg" target="dbt_int" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_int_marts" value="ref()" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7C3AED;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" source="dbt_int" target="dbt_marts" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_marts_tests" value="dbt test" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#DC2626;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" source="dbt_marts" target="dbt_tests" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_tests_out" value="Consulta SQL &amp; Render HTML" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2.5;strokeColor=#16A34A;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" source="dbt_marts" target="out_report" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
