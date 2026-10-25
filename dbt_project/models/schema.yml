@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: dim_departamento
+    description: "Tabla de Dimensión Geográfica y Territorial de Departamentos de Argentina."
+    columns:
+      - name: cod_departamento
+        description: "Clave primaria natural unificada de 5 dígitos (INDEC)."
+        tests:
+          - unique
+          - not_null
+      - name: nombre_departamento
+        description: "Nombre estandarizado del departamento o partido."
+        tests:
+          - not_null
+      - name: latitud
+        description: "Coordenada latitud del centroide geográfico."
+        tests:
+          - not_null
+      - name: longitud
+        description: "Coordenada longitud del centroide geográfico."
+        tests:
+          - not_null
+
+  - name: fct_demanda_logistica
+    description: "Tabla de Hechos con métricas de población, concentración Pareto y Alcance Digital (IADH)."
+    columns:
+      - name: cod_departamento
+        description: "Clave foránea que referencia a la dimensión geográfica."
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('dim_departamento')
+              field: cod_departamento
+      - name: poblacion
+        description: "Población censada y validada del departamento."
+        tests:
+          - not_null
+      - name: porcentaje_poblacion_nacional
+        description: "Porcentaje de la población nacional que representa el departamento."
+        tests:
+          - not_null
+      - name: indice_alcance_digital_hogares
+        description: "Métrica diferencial IADH calculada."
+        tests:
+          - not_null
+
+  - name: rep_resumen_ejecutivo
+    description: "Vista de consumo ejecutivo para la generación del dashboard y reporte HTML."
+    columns:
+      - name: cod_departamento
+        tests:
+          - unique
+          - not_null

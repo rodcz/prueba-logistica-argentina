@@ -8,6 +8,7 @@ RUN apt-get update \
        build-essential \
        libpq-dev \
        curl \
+       git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: "Capa RAW de ingesta desde fuentes públicas oficiales de Argentina."
+    tables:
+      - name: ign_departamentos
+        description: "Catálogo oficial geográfico de departamentos de la República Argentina (IGN Georef)."
+        columns:
+          - name: id
+            description: "Identificador INDEC del departamento (cadena numérica de hasta 5 dígitos)."
+          - name: nombre
+            description: "Nombre del departamento o partido."
+          - name: provincia_id
+            description: "Identificador de 2 dígitos de la provincia."
+
+      - name: indec_poblacion_departamentos
+        description: "Datos oficiales de población identificada por departamento del Censo 2022 (INDEC / RENAPER)."
+        columns:
+          - name: departamento_id
+            description: "Identificador INDEC del departamento."
+          - name: poblacion_total
+            description: "Total de población censada y verificada."
+
+      - name: enacom_conectividad
+        description: "Serie histórica trimestral de accesos y penetración de Internet fijo por provincia (ENACOM)."
+        columns:
+          - name: anio
+            description: "Año de la medición."
+          - name: trimestre
+            description: "Trimestre de la medición."
+          - name: accesos_cada_100_hogares
+            description: "Porcentaje de penetración de Internet por cada 100 hogares."

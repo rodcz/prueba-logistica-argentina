@@ -1,0 +1,530 @@
+cod_departamento,nombre_departamento,cod_provincia,nombre_provincia,macro_region,es_amba
+30015,Concordia,30,Entre Ríos,Pampeana,False
+06308,General Guido,06,Buenos Aires,Pampeana,False
+06315,General Juan Madariaga,06,Buenos Aires,Pampeana,False
+86126,Ojo de Agua,86,Santiago del Estero,NOA,False
+86063,Choya,86,Santiago del Estero,NOA,False
+74042,Gobernador Dupuy,74,San Luis,Cuyo,False
+66014,Cachi,66,Salta,NOA,False
+06819,Tornquist,06,Buenos Aires,Pampeana,False
+50042,La Paz,50,Mendoza,Cuyo,False
+06196,Coronel Pringles,06,Buenos Aires,Pampeana,False
+06875,Villarino,06,Buenos Aires,Pampeana,False
+34056,Pirané,34,Formosa,NEA,False
+50105,San Rafael,50,Mendoza,Cuyo,False
+66007,Anta,66,Salta,NOA,False
+58007,Aluminé,58,Neuquén,Patagonia,False
+66070,Iruya,66,Salta,NOA,False
+58056,Lácar,58,Neuquén,Patagonia,False
+10063,Fray Mamerto Esquiú,10,Catamarca,NOA,False
+10112,Valle Viejo,10,Catamarca,NOA,False
+18133,San Cosme,18,Corrientes,NEA,False
+02007,Comuna 1,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+02028,Comuna 4,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+50056,Lavalle,50,Mendoza,Cuyo,False
+50077,Malargüe,50,Mendoza,Cuyo,False
+62049,9 de Julio,62,Río Negro,Patagonia,False
+18049,Esquina,18,Corrientes,NEA,False
+18077,Itatí,18,Corrientes,NEA,False
+62056,Ñorquinco,62,Río Negro,Patagonia,False
+58098,Picún Leufú,58,Neuquén,Patagonia,False
+58112,Zapala,58,Neuquén,Patagonia,False
+54084,Montecarlo,54,Misiones,NEA,False
+54042,Eldorado,54,Misiones,NEA,False
+54112,San Pedro,54,Misiones,NEA,False
+94028,Antártida Argentina,94,"Tierra del Fuego, Antártida e Islas del Atlántico Sur",Patagonia,False
+58077,Minas,58,Neuquén,Patagonia,False
+58042,Chos Malal,58,Neuquén,Patagonia,False
+26014,Cushamen,26,Chubut,Patagonia,False
+78035,Lago Buenos Aires,78,Santa Cruz,Patagonia,False
+38112,Yavi,38,Jujuy,NOA,False
+38077,Santa Catalina,38,Jujuy,NOA,False
+38063,San Pedro,38,Jujuy,NOA,False
+38105,Valle Grande,38,Jujuy,NOA,False
+34035,Patiño,34,Formosa,NEA,False
+34007,Bermejo,34,Formosa,NEA,False
+38084,Susques,38,Jujuy,NOA,False
+66105,Los Andes,66,Salta,NOA,False
+66126,Orán,66,Salta,NOA,False
+38094,Tilcara,38,Jujuy,NOA,False
+38042,Palpalá,38,Jujuy,NOA,False
+26084,Río Senguer,26,Chubut,Patagonia,False
+62021,Bariloche,62,Río Negro,Patagonia,False
+58049,Huiliches,58,Neuquén,Patagonia,False
+42112,Puelén,42,La Pampa,Pampeana,False
+86140,Quebrachos,86,Santiago del Estero,NOA,False
+18112,Monte Caseros,18,Corrientes,NEA,False
+82070,Las Colonias,82,Santa Fe,Pampeana,False
+82112,San Justo,82,Santa Fe,Pampeana,False
+82091,San Cristóbal,82,Santa Fe,Pampeana,False
+82098,San Javier,82,Santa Fe,Pampeana,False
+42133,Realicó,42,La Pampa,Pampeana,False
+66140,Rosario de la Frontera,66,Salta,NOA,False
+58028,Collón Curá,58,Neuquén,Patagonia,False
+06749,San Fernando,06,Buenos Aires,AMBA,True
+06805,Tigre,06,Buenos Aires,AMBA,True
+10091,Santa María,10,Catamarca,NOA,False
+10098,Santa Rosa,10,Catamarca,NOA,False
+10070,La Paz,10,Catamarca,NOA,False
+46098,Vinchina,46,La Rioja,NOA,False
+46014,Capital,46,La Rioja,NOA,False
+14112,Río Seco,14,Córdoba,Pampeana,False
+62014,Avellaneda,62,Río Negro,Patagonia,False
+62042,General Roca,62,Río Negro,Patagonia,False
+10077,Paclín,10,Catamarca,NOA,False
+94008,Río Grande,94,"Tierra del Fuego, Antártida e Islas del Atlántico Sur",Patagonia,False
+02091,Comuna 13,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+26070,Paso de Indios,26,Chubut,Patagonia,False
+86182,Sarmiento,86,Santiago del Estero,NOA,False
+78014,Deseado,78,Santa Cruz,Patagonia,False
+26056,Languiñeo,26,Chubut,Patagonia,False
+86042,Belgrano,86,Santiago del Estero,NOA,False
+86007,Aguirre,86,Santiago del Estero,NOA,False
+50091,San Carlos,50,Mendoza,Cuyo,False
+50119,Tunuyán,50,Mendoza,Cuyo,False
+30077,Nogoyá,30,Entre Ríos,Pampeana,False
+30091,Tala,30,Entre Ríos,Pampeana,False
+30049,Gualeguay,30,Entre Ríos,Pampeana,False
+30028,Federación,30,Entre Ríos,Pampeana,False
+30070,La Paz,30,Entre Ríos,Pampeana,False
+30042,Feliciano,30,Entre Ríos,Pampeana,False
+06413,Junín,06,Buenos Aires,Pampeana,False
+06224,Chivilcoy,06,Buenos Aires,Pampeana,False
+06021,Alberti,06,Buenos Aires,Pampeana,False
+06112,Bragado,06,Buenos Aires,Pampeana,False
+06329,General Las Heras,06,Buenos Aires,AMBA,True
+62091,25 de Mayo,62,Río Negro,Patagonia,False
+06525,Marcos Paz,06,Buenos Aires,AMBA,True
+06854,25 de Mayo,06,Buenos Aires,Pampeana,False
+06588,9 de Julio,06,Buenos Aires,Pampeana,False
+06609,Pehuajó,06,Buenos Aires,Pampeana,False
+06798,Tapalqué,06,Buenos Aires,Pampeana,False
+26105,Telsen,26,Chubut,Patagonia,False
+62070,Pilcaniyeu,62,Río Negro,Patagonia,False
+06007,Adolfo Alsina,06,Buenos Aires,Pampeana,False
+50014,General Alvear,50,Mendoza,Cuyo,False
+66077,La Caldera,66,Salta,NOA,False
+06077,Arrecifes,06,Buenos Aires,Pampeana,False
+06140,Capitán Sarmiento,06,Buenos Aires,Pampeana,False
+38021,Dr. Manuel Belgrano,38,Jujuy,NOA,False
+06714,Salto,06,Buenos Aires,Pampeana,False
+06266,Exaltación de la Cruz,06,Buenos Aires,Pampeana,False
+06760,San Miguel,06,Buenos Aires,AMBA,True
+06728,San Andrés de Giles,06,Buenos Aires,Pampeana,False
+06638,Pilar,06,Buenos Aires,AMBA,True
+06497,Luján,06,Buenos Aires,AMBA,True
+90028,Famaillá,90,Tucumán,NOA,False
+06210,Chacabuco,06,Buenos Aires,Pampeana,False
+06042,Ayacucho,06,Buenos Aires,Pampeana,False
+06399,Guaminí,06,Buenos Aires,Pampeana,False
+42021,Capital,42,La Pampa,Pampeana,False
+38070,Santa Bárbara,38,Jujuy,NOA,False
+06364,General Rodríguez,06,Buenos Aires,AMBA,True
+06784,Suipacha,06,Buenos Aires,Pampeana,False
+06840,Tres de Febrero,06,Buenos Aires,AMBA,True
+46028,General Felipe Varela,46,La Rioja,NOA,False
+06574,Navarro,06,Buenos Aires,Pampeana,False
+06134,Cañuelas,06,Buenos Aires,AMBA,True
+06483,Lobos,06,Buenos Aires,Pampeana,False
+06287,General Alvear,06,Buenos Aires,Pampeana,False
+06658,Quilmes,06,Buenos Aires,Pampeana,False
+06630,Pila,06,Buenos Aires,Pampeana,False
+06322,General La Madrid,06,Buenos Aires,Pampeana,False
+06105,Bolívar,06,Buenos Aires,AMBA,True
+06049,Azul,06,Buenos Aires,Pampeana,False
+06231,Daireaux,06,Buenos Aires,Pampeana,False
+50021,Godoy Cruz,50,Mendoza,Cuyo,False
+66021,Cafayate,66,Salta,NOA,False
+06700,Saavedra,06,Buenos Aires,Pampeana,False
+06553,Monte Hermoso,06,Buenos Aires,Pampeana,False
+06476,Lobería,06,Buenos Aires,Pampeana,False
+06098,Berisso,06,Buenos Aires,AMBA,True
+06812,Tordillo,06,Buenos Aires,Pampeana,False
+06882,Zárate,06,Buenos Aires,AMBA,True
+06665,Ramallo,06,Buenos Aires,Pampeana,False
+06763,San Nicolás,06,Buenos Aires,Pampeana,False
+86168,Salavina,86,Santiago del Estero,NOA,False
+86133,Pellegrini,86,Santiago del Estero,NOA,False
+86028,Avellaneda,86,Santiago del Estero,NOA,False
+14056,Juárez Celman,14,Córdoba,Pampeana,False
+66028,Capital,66,Salta,NOA,False
+66084,La Candelaria,66,Salta,NOA,False
+66063,Guachipas,66,Salta,NOA,False
+14021,Colón,14,Córdoba,Pampeana,False
+18084,Ituzaingó,18,Corrientes,NEA,False
+46049,Famatina,46,La Rioja,NOA,False
+82028,Constitución,82,Santa Fe,Pampeana,False
+82014,Caseros,82,Santa Fe,Pampeana,False
+82084,Rosario,82,Santa Fe,Pampeana,False
+82119,San Lorenzo,82,Santa Fe,Pampeana,False
+82056,Iriondo,82,Santa Fe,Pampeana,False
+38056,San Antonio,38,Jujuy,NOA,False
+38049,Rinconada,38,Jujuy,NOA,False
+34063,Ramón Lista,34,Formosa,NEA,False
+66091,La Poma,66,Salta,NOA,False
+26007,Biedma,26,Chubut,Patagonia,False
+18021,Capital,18,Corrientes,NEA,False
+18140,San Luis del Palmar,18,Corrientes,NEA,False
+22084,Libertador General San Martín,22,Chaco,NEA,False
+26049,Gastre,26,Chubut,Patagonia,False
+06294,General Arenales,06,Buenos Aires,Pampeana,False
+30056,Gualeguaychú,30,Entre Ríos,Pampeana,False
+30063,Islas del Ibicuy,30,Entre Ríos,Pampeana,False
+30105,Victoria,30,Entre Ríos,Pampeana,False
+30021,Diamante,30,Entre Ríos,Pampeana,False
+30098,Uruguay,30,Entre Ríos,Pampeana,False
+30084,Paraná,30,Entre Ríos,Pampeana,False
+06707,Saladillo,06,Buenos Aires,Pampeana,False
+06455,Las Flores,06,Buenos Aires,Pampeana,False
+06686,Rojas,06,Buenos Aires,Pampeana,False
+06252,Escobar,06,Buenos Aires,AMBA,True
+06412,José C. Paz,06,Buenos Aires,AMBA,True
+06056,Bahía Blanca,06,Buenos Aires,Pampeana,False
+06735,San Antonio de Areco,06,Buenos Aires,Pampeana,False
+06511,Maipú,06,Buenos Aires,Pampeana,False
+06280,General Alvarado,06,Buenos Aires,Pampeana,False
+06357,General Pueyrredón,06,Buenos Aires,Pampeana,False
+06518,Mar Chiquita,06,Buenos Aires,Pampeana,False
+06868,Villa Gesell,06,Buenos Aires,Pampeana,False
+06644,Pinamar,06,Buenos Aires,Pampeana,False
+06336,General Lavalle,06,Buenos Aires,Pampeana,False
+06420,La Costa,06,Buenos Aires,Pampeana,False
+06505,Magdalena,06,Buenos Aires,Pampeana,False
+18175,Sauce,18,Corrientes,NEA,False
+06861,Vicente López,06,Buenos Aires,AMBA,True
+66098,La Viña,66,Salta,NOA,False
+06672,Rauch,06,Buenos Aires,Pampeana,False
+66112,Metán,66,Salta,NOA,False
+66119,Molinos,66,Salta,NOA,False
+22112,O'Higgins,22,Chaco,NEA,False
+06560,Moreno,06,Buenos Aires,AMBA,True
+06427,La Matanza,06,Buenos Aires,AMBA,True
+06791,Tandil,06,Buenos Aires,Pampeana,False
+06203,Coronel Suárez,06,Buenos Aires,Pampeana,False
+82063,La Capital,82,Santa Fe,Pampeana,False
+54049,General Manuel Belgrano,54,Misiones,NEA,False
+54056,Guaraní,54,Misiones,NEA,False
+54063,Iguazú,54,Misiones,NEA,False
+82035,Garay,82,Santa Fe,Pampeana,False
+54098,San Ignacio,54,Misiones,NEA,False
+46035,Chamical,46,La Rioja,NOA,False
+26035,Futaleufú,26,Chubut,Patagonia,False
+78049,Río Chico,78,Santa Cruz,Patagonia,False
+66154,San Carlos,66,Salta,NOA,False
+78028,Lago Argentino,78,Santa Cruz,Patagonia,False
+54007,Apóstoles,54,Misiones,NEA,False
+22126,1° de Mayo,22,Chaco,NEA,False
+70063,9 de Julio,70,San Juan,Cuyo,False
+70007,Albardón,70,San Juan,Cuyo,False
+70014,Angaco,70,San Juan,Cuyo,False
+70077,Rawson,70,San Juan,Cuyo,False
+70126,25 de Mayo,70,San Juan,Cuyo,False
+70133,Zonda,70,San Juan,Cuyo,False
+70112,Ullum,70,San Juan,Cuyo,False
+70105,Sarmiento,70,San Juan,Cuyo,False
+70021,Calingasta,70,San Juan,Cuyo,False
+70049,Iglesia,70,San Juan,Cuyo,False
+70056,Jáchal,70,San Juan,Cuyo,False
+70119,Valle Fértil,70,San Juan,Cuyo,False
+70035,Caucete,70,San Juan,Cuyo,False
+06014,Adolfo Gonzales Chaves,06,Buenos Aires,Pampeana,False
+30035,Federal,30,Entre Ríos,Pampeana,False
+86014,Alberdi,86,Santiago del Estero,NOA,False
+86098,Juan Felipe Ibarra,86,Santiago del Estero,NOA,False
+86077,General Taboada,86,Santiago del Estero,NOA,False
+02042,Comuna 6,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+06343,General Paz,06,Buenos Aires,Pampeana,False
+34042,Pilagás,34,Formosa,NEA,False
+34021,Laishi,34,Formosa,NEA,False
+86154,Rivadavia,86,Santiago del Estero,NOA,False
+66042,Chicoana,66,Salta,NOA,False
+26042,Gaiman,26,Chubut,Patagonia,False
+26077,Rawson,26,Chubut,Patagonia,False
+46077,General Lamadrid,46,La Rioja,NOA,False
+74007,Ayacucho,74,San Luis,Cuyo,False
+06721,Salliqueló,06,Buenos Aires,Pampeana,False
+06091,Berazategui,06,Buenos Aires,AMBA,True
+66049,General Güemes,66,Salta,NOA,False
+50112,Santa Rosa,50,Mendoza,Cuyo,False
+22063,General Güemes,22,Chaco,NEA,False
+46084,General Ortiz de Ocampo,46,La Rioja,NOA,False
+14035,General Roca,14,Córdoba,Pampeana,False
+22036,12 de Octubre,22,Chaco,NEA,False
+14175,Tulumba,14,Córdoba,Pampeana,False
+14028,Cruz del Eje,14,Córdoba,Pampeana,False
+14091,Punilla,14,Córdoba,Pampeana,False
+50084,Rivadavia,50,Mendoza,Cuyo,False
+62028,Conesa,62,Río Negro,Patagonia,False
+62084,Valcheta,62,Río Negro,Patagonia,False
+06351,General Pinto,06,Buenos Aires,Pampeana,False
+06742,San Cayetano,06,Buenos Aires,Pampeana,False
+06833,Tres Arroyos,06,Buenos Aires,Pampeana,False
+06189,Coronel Dorrego,06,Buenos Aires,Pampeana,False
+06581,Necochea,06,Buenos Aires,Pampeana,False
+46105,Independencia,46,La Rioja,NOA,False
+06218,Chascomús,06,Buenos Aires,Pampeana,False
+06655,Punta Indio,06,Buenos Aires,Pampeana,False
+38014,El Carmen,38,Jujuy,NOA,False
+14147,Santa María,14,Córdoba,Pampeana,False
+62077,San Antonio,62,Río Negro,Patagonia,False
+46007,Arauco,46,La Rioja,NOA,False
+06466,Lezama,06,Buenos Aires,Pampeana,False
+06126,Campana,06,Buenos Aires,AMBA,True
+78042,Magallanes,78,Santa Cruz,Patagonia,False
+78007,Corpen Aike,78,Santa Cruz,Patagonia,False
+14070,Minas,14,Córdoba,Pampeana,False
+14126,San Alberto,14,Córdoba,Pampeana,False
+14119,Río Segundo,14,Córdoba,Pampeana,False
+14140,San Justo,14,Córdoba,Pampeana,False
+14182,Unión,14,Córdoba,Pampeana,False
+14161,Tercero Arriba,14,Córdoba,Pampeana,False
+66035,Cerrillos,66,Salta,NOA,False
+14098,Río Cuarto,14,Córdoba,Pampeana,False
+50126,Tupungato,50,Mendoza,Cuyo,False
+06616,Pellegrini,06,Buenos Aires,Pampeana,False
+26091,Sarmiento,26,Chubut,Patagonia,False
+62035,El Cuy,62,Río Negro,Patagonia,False
+50049,Las Heras,50,Mendoza,Cuyo,False
+22154,Sargento Cabral,22,Chaco,NEA,False
+22161,Tapenagá,22,Chaco,NEA,False
+14084,Presidente Roque Sáenz Peña,14,Córdoba,Pampeana,False
+58021,Catán Lil,58,Neuquén,Patagonia,False
+22119,Presidencia de la Plaza,22,Chaco,NEA,False
+02035,Comuna 5,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+94015,Ushuaia,94,"Tierra del Fuego, Antártida e Islas del Atlántico Sur",Patagonia,False
+10028,Antofagasta de la Sierra,10,Catamarca,NOA,False
+06245,Ensenada,06,Buenos Aires,AMBA,True
+90084,Capital,90,Tucumán,NOA,False
+82007,Belgrano,82,Santa Fe,Pampeana,False
+06623,Pergamino,06,Buenos Aires,Pampeana,False
+22070,Independencia,22,Chaco,NEA,False
+06651,Puán,06,Buenos Aires,Pampeana,False
+18035,Curuzú Cuatiá,18,Corrientes,NEA,False
+06392,General Villegas,06,Buenos Aires,Pampeana,False
+50063,Luján de Cuyo,50,Mendoza,Cuyo,False
+02084,Comuna 12,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+82049,General Obligado,82,Santa Fe,Pampeana,False
+82133,Vera,82,Santa Fe,Pampeana,False
+82077,9 de Julio,82,Santa Fe,Pampeana,False
+62007,Adolfo Alsina,62,Río Negro,Patagonia,False
+22133,Quitilipi,22,Chaco,NEA,False
+78021,Güer Aike,78,Santa Cruz,Patagonia,False
+10042,Capayán,10,Catamarca,NOA,False
+90007,Burruyacú,90,Tucumán,NOA,False
+82105,San Jerónimo,82,Santa Fe,Pampeana,False
+10105,Tinogasta,10,Catamarca,NOA,False
+02049,Comuna 7,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+42077,Hucal,42,La Pampa,Pampeana,False
+02070,Comuna 10,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+42014,Caleu Caleu,42,La Pampa,Pampeana,False
+42084,Lihuel Calel,42,La Pampa,Pampeana,False
+42042,Curacó,42,La Pampa,Pampeana,False
+58035,Confluencia,58,Neuquén,Patagonia,False
+58105,Picunches,58,Neuquén,Patagonia,False
+58014,Añelo,58,Neuquén,Patagonia,False
+58063,Loncopué,58,Neuquén,Patagonia,False
+58084,Ñorquín,58,Neuquén,Patagonia,False
+58091,Pehuenches,58,Neuquén,Patagonia,False
+02077,Comuna 11,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+62063,Pichi Mahuida,62,Río Negro,Patagonia,False
+42056,Chapaleufú,42,La Pampa,Pampeana,False
+86175,San Martín,86,Santiago del Estero,NOA,False
+42105,Maracó,42,La Pampa,Pampeana,False
+34028,Matacos,34,Formosa,NEA,False
+42098,Loventué,42,La Pampa,Pampeana,False
+42147,Trenel,42,La Pampa,Pampeana,False
+86056,Copo,86,Santiago del Estero,NOA,False
+42091,Limay Mahuida,42,La Pampa,Pampeana,False
+42049,Chalileo,42,La Pampa,Pampeana,False
+42063,Chical Co,42,La Pampa,Pampeana,False
+22098,Mayor Luis J. Fontana,22,Chaco,NEA,False
+22043,Fray Justo Santa María de Oro,22,Chaco,NEA,False
+46063,General Belgrano,46,La Rioja,NOA,False
+22007,Almirante Brown,22,Chaco,NEA,False
+26063,Mártires,26,Chubut,Patagonia,False
+86147,Río Hondo,86,Santiago del Estero,NOA,False
+74014,Belgrano,74,San Luis,Cuyo,False
+58070,Los Lagos,58,Neuquén,Patagonia,False
+22091,Maipú,22,Chaco,NEA,False
+02014,Comuna 2,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+22105,9 de Julio,22,Chaco,NEA,False
+14077,Pocho,14,Córdoba,Pampeana,False
+06270,Ezeiza,06,Buenos Aires,AMBA,True
+10021,Andalgalá,10,Catamarca,NOA,False
+10007,Ambato,10,Catamarca,NOA,False
+02056,Comuna 8,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+86084,Guasayán,86,Santiago del Estero,NOA,False
+10056,El Alto,10,Catamarca,NOA,False
+14154,Sobremonte,14,Córdoba,Pampeana,False
+86035,Banda,86,Santiago del Estero,NOA,False
+14014,Capital,14,Córdoba,Pampeana,False
+02021,Comuna 3,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+86161,Robles,86,Santiago del Estero,NOA,False
+86105,Loreto,86,Santiago del Estero,NOA,False
+42028,Catriló,42,La Pampa,Pampeana,False
+86049,Capital,86,Santiago del Estero,NOA,False
+02098,Comuna 14,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+30008,Colón,30,Entre Ríos,Pampeana,False
+30113,Villaguay,30,Entre Ríos,Pampeana,False
+06168,Castelli,06,Buenos Aires,Pampeana,False
+30088,San Salvador,30,Entre Ríos,Pampeana,False
+10035,Belén,10,Catamarca,NOA,False
+10049,Capital,10,Catamarca,NOA,False
+10014,Ancasti,10,Catamarca,NOA,False
+10084,Pomán,10,Catamarca,NOA,False
+06028,Almirante Brown,06,Buenos Aires,AMBA,True
+06648,Presidente Perón,06,Buenos Aires,AMBA,True
+06119,Brandsen,06,Buenos Aires,Pampeana,False
+06147,Carlos Casares,06,Buenos Aires,Pampeana,False
+06385,General Viamonte,06,Buenos Aires,Pampeana,False
+06154,Carlos Tejedor,06,Buenos Aires,Pampeana,False
+06826,Trenque Lauquen,06,Buenos Aires,Pampeana,False
+06301,General Belgrano,06,Buenos Aires,Pampeana,False
+06547,Monte,06,Buenos Aires,Pampeana,False
+06693,Roque Pérez,06,Buenos Aires,Pampeana,False
+06595,Olavarría,06,Buenos Aires,Pampeana,False
+06539,Merlo,06,Buenos Aires,AMBA,True
+54014,Cainguás,54,Misiones,NEA,False
+94021,Islas del Atlántico Sur,94,"Tierra del Fuego, Antártida e Islas del Atlántico Sur",Patagonia,False
+06260,Esteban Echeverría,06,Buenos Aires,AMBA,True
+06161,Carmen de Areco,06,Buenos Aires,Pampeana,False
+06532,Mercedes,06,Buenos Aires,Pampeana,False
+06408,Hurlingham,06,Buenos Aires,AMBA,True
+06568,Morón,06,Buenos Aires,AMBA,True
+50035,Junín,50,Mendoza,Cuyo,False
+06515,Malvinas Argentinas,06,Buenos Aires,AMBA,True
+06847,Tres Lomas,06,Buenos Aires,Pampeana,False
+06371,General San Martín,06,Buenos Aires,AMBA,True
+06469,Lincoln,06,Buenos Aires,Pampeana,False
+06448,Laprida,06,Buenos Aires,Pampeana,False
+06756,San Isidro,06,Buenos Aires,AMBA,True
+06084,Benito Juárez,06,Buenos Aires,Pampeana,False
+06175,Colón,06,Buenos Aires,Pampeana,False
+06410,Ituzaingó,06,Buenos Aires,AMBA,True
+06274,Florencio Varela,06,Buenos Aires,AMBA,True
+86119,Moreno,86,Santiago del Estero,NOA,False
+22028,Chacabuco,22,Chaco,NEA,False
+06778,San Vicente,06,Buenos Aires,AMBA,True
+46021,Castro Barros,46,La Rioja,NOA,False
+06063,Balcarce,06,Buenos Aires,Pampeana,False
+06406,Hipólito Yrigoyen,06,Buenos Aires,Pampeana,False
+50007,Capital,50,Mendoza,Cuyo,False
+06238,Dolores,06,Buenos Aires,Pampeana,False
+86070,Figueroa,86,Santiago del Estero,NOA,False
+22039,2 de Abril,22,Chaco,NEA,False
+46112,Rosario Vera Peñaloza,46,La Rioja,NOA,False
+18154,San Miguel,18,Corrientes,NEA,False
+18042,Empedrado,18,Corrientes,NEA,False
+50028,Guaymallén,50,Mendoza,Cuyo,False
+86189,Silípica,86,Santiago del Estero,NOA,False
+42126,Rancul,42,La Pampa,Pampeana,False
+50070,Maipú,50,Mendoza,Cuyo,False
+42007,Atreucó,42,La Pampa,Pampeana,False
+50098,San Martín,50,Mendoza,Cuyo,False
+42070,Guatraché,42,La Pampa,Pampeana,False
+46126,Sanagasta,46,La Rioja,NOA,False
+42035,Conhelo,42,La Pampa,Pampeana,False
+54077,Libertador General San Martín,54,Misiones,NEA,False
+22168,25 de Mayo,22,Chaco,NEA,False
+46070,General Juan Facundo Quiroga,46,La Rioja,NOA,False
+46056,Ángel Vicente Peñaloza,46,La Rioja,NOA,False
+46042,Chilecito,46,La Rioja,NOA,False
+42140,Toay,42,La Pampa,Pampeana,False
+82042,General López,82,Santa Fe,Pampeana,False
+06462,Leandro N. Alem,06,Buenos Aires,Pampeana,False
+22014,Bermejo,22,Chaco,NEA,False
+14007,Calamuchita,14,Córdoba,Pampeana,False
+90014,Cruz Alta,90,Tucumán,NOA,False
+46091,General San Martín,46,La Rioja,NOA,False
+90063,Lules,90,Tucumán,NOA,False
+90119,Yerba Buena,90,Tucumán,NOA,False
+46119,San Blas de Los Sauces,46,La Rioja,NOA,False
+90105,Tafí Viejo,90,Tucumán,NOA,False
+22049,General Belgrano,22,Chaco,NEA,False
+34014,Formosa,34,Formosa,NEA,False
+34049,Pilcomayo,34,Formosa,NEA,False
+26098,Tehuelches,26,Chubut,Patagonia,False
+26021,Escalante,26,Chubut,Patagonia,False
+14049,Ischilín,14,Córdoba,Pampeana,False
+14168,Totoral,14,Córdoba,Pampeana,False
+14042,General San Martín,14,Córdoba,Pampeana,False
+14133,San Javier,14,Córdoba,Pampeana,False
+14105,Río Primero,14,Córdoba,Pampeana,False
+14063,Marcos Juárez,14,Córdoba,Pampeana,False
+22056,General Donovan,22,Chaco,NEA,False
+06679,Rivadavia,06,Buenos Aires,Pampeana,False
+06602,Patagones,06,Buenos Aires,Pampeana,False
+74056,Juan Martín de Pueyrredón,74,San Luis,Cuyo,False
+74035,General Pedernera,74,San Luis,Cuyo,False
+90112,Trancas,90,Tucumán,NOA,False
+90098,Tafí del Valle,90,Tucumán,NOA,False
+74063,Libertador General San Martín,74,San Luis,Cuyo,False
+74021,Coronel Pringles,74,San Luis,Cuyo,False
+74028,Chacabuco,74,San Luis,Cuyo,False
+02063,Comuna 9,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+74049,Junín,74,San Luis,Cuyo,False
+86112,Mitre,86,Santiago del Estero,NOA,False
+86021,Atamisqui,86,Santiago del Estero,NOA,False
+18014,Berón de Astrada,18,Corrientes,NEA,False
+94011,Tolhuin,94,"Tierra del Fuego, Antártida e Islas del Atlántico Sur",Patagonia,False
+54028,Capital,54,Misiones,NEA,False
+54021,Candelaria,54,Misiones,NEA,False
+86091,Jiménez,86,Santiago del Estero,NOA,False
+06182,Coronel de Marina Leonardo Rosales,06,Buenos Aires,Pampeana,False
+06070,Baradero,06,Buenos Aires,Pampeana,False
+06770,San Pedro,06,Buenos Aires,Pampeana,False
+66161,Santa Victoria,66,Salta,NOA,False
+66056,General José de San Martín,66,Salta,NOA,False
+66133,Rivadavia,66,Salta,NOA,False
+66147,Rosario de Lerma,66,Salta,NOA,False
+38035,Ledesma,38,Jujuy,NOA,False
+38028,Humahuaca,38,Jujuy,NOA,False
+38007,Cochinoca,38,Jujuy,NOA,False
+38098,Tumbaya,38,Jujuy,NOA,False
+06277,Florentino Ameghino,06,Buenos Aires,Pampeana,False
+26028,Florentino Ameghino,26,Chubut,Patagonia,False
+90049,La Cocha,90,Tucumán,NOA,False
+90035,Graneros,90,Tucumán,NOA,False
+90042,Juan Bautista Alberdi,90,Tucumán,NOA,False
+90077,Río Chico,90,Tucumán,NOA,False
+90091,Simoca,90,Tucumán,NOA,False
+90021,Chicligasta,90,Tucumán,NOA,False
+90070,Monteros,90,Tucumán,NOA,False
+90056,Leales,90,Tucumán,NOA,False
+82126,San Martín,82,Santa Fe,Pampeana,False
+54119,25 de Mayo,54,Misiones,NEA,False
+54091,Oberá,54,Misiones,NEA,False
+82021,Castellanos,82,Santa Fe,Pampeana,False
+42119,Quemú Quemú,42,La Pampa,Pampeana,False
+42154,Utracán,42,La Pampa,Pampeana,False
+18147,San Martín,18,Corrientes,NEA,False
+18119,Paso de los Libres,18,Corrientes,NEA,False
+18070,Goya,18,Corrientes,NEA,False
+18091,Lavalle,18,Corrientes,NEA,False
+18161,San Roque,18,Corrientes,NEA,False
+18056,General Alvear,18,Corrientes,NEA,False
+18028,Concepción,18,Corrientes,NEA,False
+18007,Bella Vista,18,Corrientes,NEA,False
+18168,Santo Tomé,18,Corrientes,NEA,False
+18126,Saladas,18,Corrientes,NEA,False
+18063,General Paz,18,Corrientes,NEA,False
+54070,Leandro N. Alem,54,Misiones,NEA,False
+54105,San Javier,54,Misiones,NEA,False
+18098,Mburucuyá,18,Corrientes,NEA,False
+54035,Concepción,54,Misiones,NEA,False
+22140,San Fernando,22,Chaco,NEA,False
+22147,San Lorenzo,22,Chaco,NEA,False
+06434,Lanús,06,Buenos Aires,AMBA,True
+06490,Lomas de Zamora,06,Buenos Aires,AMBA,True
+06035,Avellaneda,06,Buenos Aires,AMBA,True
+22077,Libertad,22,Chaco,NEA,False
+22021,Comandante Fernández,22,Chaco,NEA,False
+02105,Comuna 15,02,Ciudad Autónoma de Buenos Aires,AMBA,True
+70042,Chimbas,70,San Juan,Cuyo,False
+70028,Capital,70,San Juan,Cuyo,False
+70084,Rivadavia,70,San Juan,Cuyo,False
+70098,Santa Lucía,70,San Juan,Cuyo,False
+70091,San Martín,70,San Juan,Cuyo,False
+70070,Pocito,70,San Juan,Cuyo,False
+06441,La Plata,06,Buenos Aires,AMBA,True
+18105,Mercedes,18,Corrientes,NEA,False

@@ -1,0 +1,35 @@
+name: 'prueba_logistica'
+version: '1.0.0'
+config-version: 2
+
+profile: 'prueba_logistica'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  prueba_logistica:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: view
+      +schema: intermediate
+    marts:
+      +materialized: table
+      +schema: marts
+
+seeds:
+  prueba_logistica:
+    seed_departamentos_regiones:
+      +column_types:
+        cod_departamento: varchar(5)
+        cod_provincia: varchar(2)

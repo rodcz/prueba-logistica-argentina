@@ -18,3 +18,5 @@ venv/
 # Sistema operativo
 .DS_Store
 Thumbs.db
+.user.yml
+dbt_project/.user.yml
