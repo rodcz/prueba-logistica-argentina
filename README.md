@@ -19,11 +19,11 @@ Pipeline de datos automatizado y contenerizado para la consolidación, modelado 
    docker compose up -d --build
    ```
 3. **Ejecutar el pipeline en Apache Airflow:**
-   * Ingresar a `http://localhost:8080` (Usuario: `airflow` | Contraseña: `airflow`).
-   * Activar y disparar el DAG `dag_pipeline_logistica_demanda_argentina`.
+   * Ingresar a `http://localhost:8080` (Usuario: `admin` | Contraseña: `admin`).
+   * Activar y disparar el DAG `dag_demanda_logistica`.
    * *O dispararlo por terminal:*
      ```bash
-     docker compose exec airflow-webserver airflow dags trigger dag_pipeline_logistica_demanda_argentina
+     docker compose exec airflow-webserver airflow dags trigger dag_demanda_logistica
      ```
 4. **Verificar los resultados:**
    * **Base de datos (PostgreSQL 18 en `localhost:5432`):**
