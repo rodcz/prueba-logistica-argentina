@@ -13,19 +13,23 @@ Solución integral de Ingeniería de Datos para la ingesta, transformación dime
 ## 📑 Tabla de Contenidos
 
 1. [Resumen Ejecutivo y Objetivos](#-resumen-ejecutivo-y-objetivos)
-2. [Arquitectura de la Solución y Stack Tecnológico](#-arquitectura-de-la-solución-y-stack-tecnológico)
-3. [Diagrama de Arquitectura (Draw.io)](#-diagrama-de-arquitectura-drawio)
-4. [Estructura del Repositorio](#-estructura-del-repositorio)
-5. [Guía de Despliegue Rápido (Quickstart)](#-guía-de-despliegue-rápido-quickstart)
-6. [Diseño del Modelado Dimensional (Medallion: Bronze, Silver, Gold)](#-diseño-del-modelado-dimensional)
-7. [Respuestas a las Preguntas Técnicas del Negocio](#-respuestas-a-las-preguntas-técnicas-del-negocio)
+2. [Fuentes de Datos Oficiales y Justificación](#-fuentes-de-datos-oficiales-y-justificación)
+3. [Arquitectura de la Solución y Stack Tecnológico](#-arquitectura-de-la-solución-y-stack-tecnológico)
+4. [Decisiones de Arquitectura y Alternativas Descartadas](#-decisiones-de-arquitectura-y-alternativas-descartadas)
+5. [Diagrama de Arquitectura (Draw.io)](#-diagrama-de-arquitectura-drawio)
+6. [Estructura del Repositorio](#-estructura-del-repositorio)
+7. [Guía de Despliegue Rápido (Quickstart)](#-guía-de-despliegue-rápido-quickstart)
+8. [Diseño del Modelado Dimensional (Medallion: Bronze, Silver, Gold)](#-diseño-del-modelado-dimensional)
+9. [Respuestas a las Preguntas Técnicas del Negocio](#-respuestas-a-las-preguntas-técnicas-del-negocio)
    - [Pregunta 1: Top 10 Departamentos más Poblados (con Coordenadas IGN)](#pregunta-1-top-10-departamentos-más-poblados)
    - [Pregunta 2: Distribución Poblacional por Jurisdicción Provincial](#pregunta-2-distribución-poblacional-por-provincia)
    - [Pregunta 3: Análisis de Concentración Demográfica (Curva de Pareto)](#pregunta-3-análisis-de-concentración-demográfica-curva-de-pareto)
    - [Pregunta 4: Métrica Logística Propuesta — Índice de Alcance Digital de Hogares (IADH)](#pregunta-4-métrica-logística-propuesta--índice-de-alcance-digital-de-hogares-iadh)
    - [Estrategia Macro-Regional de Centros de Distribución (CD)](#estrategia-macro-regional-de-centros-de-distribución-cd)
-8. [Auditoría de Calidad de Datos (dbt test)](#-auditoría-de-calidad-de-datos-dbt-test)
-9. [Reporte Ejecutivo Interactivo HTML](#-reporte-ejecutivo-interactivo-html)
+10. [Confiabilidad del Resultado y Métricas de Calidad (dbt test)](#-confiabilidad-del-resultado-y-métricas-de-calidad)
+11. [Limitaciones y Roadmap Futuro](#-limitaciones-y-roadmap-futuro)
+12. [Reporte Ejecutivo Interactivo HTML](#-reporte-ejecutivo-interactivo-html)
+13. [Autor y Contacto](#-autor-y-contacto)
 
 ---
 
@@ -40,6 +44,32 @@ El pipeline procesa fuentes oficiales gubernamentales de la República Argentina
 1. **Instituto Geográfico Nacional (IGN):** Coordenadas geográficas, centroides y delimitación de los 529 departamentos del país.
 2. **Instituto Nacional de Estadística y Censos (INDEC / RENAPER):** Censo Nacional de Población, Hogares y Viviendas 2022 y proyecciones 2024.
 3. **Ente Nacional de Comunicaciones (ENACOM):** Penetración de accesos a Internet de banda ancha fija por cada 100 hogares a nivel provincial.
+
+---
+
+## 🌐 Fuentes de Datos Oficiales y Justificación
+
+Para responder con exactitud a los requerimientos del desafío, el pipeline procesa y cruza cinco fuentes oficiales gubernamentales:
+
+1. **Instituto Geográfico Nacional (IGN) — API GeoRef:**
+   * *Datos:* Coordenadas geográficas (centroides), nombres oficiales y delimitación de los 529 departamentos del país.
+   * *Por qué:* Es la autoridad cartográfica máxima de la República Argentina. Asegura claves foráneas oficiales unificadas de 5 dígitos y las coordenadas necesarias para la visualización en el mapa interactivo.
+
+2. **RENAPER (Ministerio del Interior - Padrón Agosto 2024):**
+   * *Datos:* Padrón estructurado con 48.983 registros de población identificada por departamento, sexo y edad quinquenal.
+   * *Por qué:* Es la única fuente demográfica oficial abierta que ofrece un archivo tabular (.csv) unificado y automatizable directamente por URL pública para un pipeline ELT, a diferencia del Censo INDEC 2022 que se encuentra fraccionado en 24 archivos de Excel con celdas combinadas pensadas para lectura humana.
+
+3. **INDEC (Censo Nacional 2022 — Cuadro 1.1, Página 25):**
+   * *Datos:* Población oficial desagregada de las 15 comunas de la Ciudad Autónoma de Buenos Aires.
+   * *Por qué:* Utilizado como benchmark oficial de calibración proporcional para desagregar las 15 comunas porteñas que el archivo de RENAPER consolidó bajo un único código comodín (`02000`).
+
+4. **ENACOM (Ente Nacional de Comunicaciones):**
+   * *Datos:* Series trimestrales históricas de penetración de accesos a internet fijo residencial por cada 100 hogares a nivel provincial.
+   * *Por qué:* Permite contrastar la demanda demográfica bruta contra el acceso real a internet en los hogares y calcular la demanda digital efectiva (IADH).
+
+5. **DAMI / Presidencia de la Nación:**
+   * *Datos:* Delimitación oficial de los 40 municipios del Área Metropolitana de Buenos Aires (AMBA) y clasificación de las 6 Macro-Regiones.
+   * *Por qué:* Provee la base de zonificación político-territorial para la estrategia de localización de Centros de Distribución (CD).
 
 ---
 
@@ -86,6 +116,25 @@ El pipeline sigue el paradigma moderno **ELT (Extract - Load - Transform)** cont
 | **dbt-postgres** | `1.11.0` | Adaptador nativo de dbt para PostgreSQL con soporte optimizado para transacciones DDL y materializaciones de vistas/tablas. |
 | **Docker Compose** | `v2` | Orquestación local reproducible multi-contenedor con red bridge aislada (`logistica_net`), variables de entorno dinámicas y healthchecks. |
 | **Python** | `3.10` | Motor de scripting para ingesta de alto rendimiento (`psycopg2.extras.execute_values`) y compilación del reporte ejecutivo HTML con Leaflet.js. |
+
+---
+
+## ⚖️ Decisiones de Arquitectura y Alternativas Descartadas
+
+* **Decisión 1: `groupby` compuesto en la ingesta de RENAPER (`['departamento_id', 'nombre_departamento', 'provincia_id', 'nombre_provincia']`)**
+  * *Motivo técnico:* En Argentina existen múltiples departamentos con el mismo nombre en distintas provincias (por ejemplo, el departamento *Capital* en Córdoba, Mendoza y Salta; o *San Martín* en San Juan y Corrientes). Al agrupar por la clave compuesta, garantizamos que nunca se fusionen departamentos homónimos y preservamos los nombres descriptivos en una sola pasada en memoria, evitando un segundo `JOIN` costoso en Python.
+
+* **Decisión 2: Escalamiento censal proporcional en CABA vs. Dejar en 0 o dividir en 15 partes iguales.**
+  * *Descartado:* Dividir los 3,4M de CABA entre 15 partes iguales distorsionaría la demanda real (Palermo tiene más del doble que Recoleta). Dejarlo en cero rompería el mapa.
+  * *Motivo:* Se aplicó la regla de tres censal ($P_{	ext{censo}} 	imes rac{3.400.592}{3.121.707}$), preservando la forma demográfica real de la ciudad y el control contable 1:1.
+
+* **Decisión 3: Métrica IADH (Hogares Conectados) vs. Usar solo población o tasa de habitantes.**
+  * *Descartado:* Guiarse solo por penetración (llevaría a invertir en zonas con alto % pero sin gente) o solo por habitantes individuales (el 25% de contratos subestimaría a la familia que comparte el Wi-Fi en el hogar).
+  * *Motivo:* El IADH entrega el volumen absoluto de hogares conectables que reciben paquetes de última milla.
+
+* **Decisión 4: Materialización en dbt (Staging e Intermediate como Vistas vs. Tablas físicas).**
+  * *Descartado:* Crear tablas físicas intermedias redundantes que consuman almacenamiento innecesario.
+  * *Motivo:* Las vistas lógicas ahorran espacio en disco y consultan datos frescos de la capa raw sin sobrecoste.
 
 ---
 
@@ -360,37 +409,54 @@ A partir de la zonificación implementada en `dim_departamento`, se define el si
 
 ---
 
-## 🧪 Auditoría de Calidad de Datos (dbt test)
+## 🛡️ Confiabilidad del Resultado y Métricas de Calidad
 
-El proyecto cuenta con una batería de **14 pruebas automatizadas** de calidad e integridad en dbt:
+La confiabilidad de los datos se mide, audita y certifica automáticamente mediante una suite de **14 pruebas de calidad en dbt** integradas en Airflow como **Quality Gate (Fail-Fast)**:
 
 ```bash
 docker exec airflow_scheduler dbt test --project-dir /opt/dbt --profiles-dir /opt/dbt
 ```
 
+### Métricas de Cobertura y Exactitud Certificadas:
+- **Cobertura Territorial (100%):** Exactamente 529 de 529 departamentos auditados según el IGN. Cero departamentos nulos.
+- **Georreferenciación Completa (100%):** 529 de 529 centroides válidos con latitud y longitud no nulas (`NOT NULL`).
+- **Control de Integridad Nacional:** 46.877.222 habitantes, coincidiendo exactamente 1:1 con la suma de la fuente cruda de RENAPER.
+- **Control de Población CABA:** 3.400.592 habitantes, cuadre contable 1:1 con el padrón oficial.
+
 ### Resultados de la Suite de Pruebas:
 ```text
-03:04:04  Running with dbt=1.12.6
-03:04:04  Found 7 models, 14 data tests, 1 seed, 3 sources
-03:04:05  PASS not_null_dim_departamento_cod_departamento ........................ [PASS]
-03:04:05  PASS not_null_dim_departamento_latitud ................................. [PASS]
-03:04:05  PASS not_null_dim_departamento_longitud ................................ [PASS]
-03:04:05  PASS not_null_dim_departamento_nombre_departamento ..................... [PASS]
-03:04:05  PASS not_null_fct_demanda_logistica_cod_departamento ................... [PASS]
-03:04:05  PASS not_null_fct_demanda_logistica_poblacion .......................... [PASS]
-03:04:05  PASS not_null_fct_demanda_logistica_porcentaje_poblacion_nacional ...... [PASS]
-03:04:05  PASS not_null_fct_demanda_logistica_indice_alcance_digital_hogares ..... [PASS]
-03:04:05  PASS unique_dim_departamento_cod_departamento ......................... [PASS]
-03:04:05  PASS unique_fct_demanda_logistica_cod_departamento .................... [PASS]
-03:04:05  PASS unique_rep_resumen_ejecutivo_cod_departamento .................... [PASS]
-03:04:05  PASS relationships_fct_demanda_logistica_cod_departamento .............. [PASS]
-03:04:05  PASS test_suma_poblacion_100_pct ...................................... [PASS]
-03:04:05  Done. PASS=14 WARN=0 ERROR=0 TOTAL=14
+Running with dbt=1.12.6
+Found 7 models, 14 data tests, 1 seed, 3 sources
+PASS not_null_dim_departamento_cod_departamento ........................ [PASS]
+PASS not_null_dim_departamento_latitud ................................. [PASS]
+PASS not_null_dim_departamento_longitud ................................ [PASS]
+PASS not_null_dim_departamento_nombre_departamento ..................... [PASS]
+PASS not_null_fct_demanda_logistica_cod_departamento ................... [PASS]
+PASS not_null_fct_demanda_logistica_poblacion .......................... [PASS]
+PASS not_null_fct_demanda_logistica_porcentaje_poblacion_nacional ...... [PASS]
+PASS not_null_fct_demanda_logistica_indice_alcance_digital_hogares ..... [PASS]
+PASS unique_dim_departamento_cod_departamento ......................... [PASS]
+PASS unique_fct_demanda_logistica_cod_departamento .................... [PASS]
+PASS unique_rep_resumen_ejecutivo_cod_departamento .................... [PASS]
+PASS relationships_fct_demanda_logistica_cod_departamento .............. [PASS]
+PASS test_suma_poblacion_100_pct ...................................... [PASS]
+Done. PASS=14 WARN=0 ERROR=0 TOTAL=14
 ```
 
-- **Cobertura Departamental:** Exactamente 529 de 529 departamentos auditados (100%).
-- **Integridad Referencial:** Relaciones foráneas sin orfandad entre hechos y dimensiones.
-- **Geocodificación Completa:** 0 coordenadas nulas en todo el territorio nacional.
+- **Integridad Referencial:** Relaciones foráneas sin orfandad entre la tabla de hechos y la dimensión (`relationships`).
+- **Regla Singular de Negocio (`test_suma_poblacion_100_pct`):** Audita que la suma de porcentajes de población nacional sobre los 529 departamentos dé exactamente **100,00%** (+/- 0.05% de tolerancia por redondeo).
+
+---
+
+## ⚠️ Limitaciones y Roadmap Futuro
+
+1. **Visualización Geoespacial Dependiente de Conexión Externa:**
+   * *Limitación actual:* El reporte HTML interactivo consume las teselas del mapa desde servidores web públicos en la nube. Si el archivo se abre en una máquina sin salida a internet (entorno offline) o detrás de un cortafuegos corporativo estricto, el mapa base no renderiza las calles de fondo.
+   * *Con más tiempo (Roadmap):* Empaquetar los assets estáticos de Leaflet de forma local y servir un archivo de teselas offline `.mbtiles` mediante un microservicio de TileServer GL, logrando un dashboard 100% autónomo y desconectado.
+
+2. **Análisis Estático (Snapshot) vs. Predicción con Series de Tiempo:**
+   * *Limitación actual:* El modelo analítico actual es descriptivo: toma una "foto fija" del último trimestre disponible de ENACOM y del padrón 2024, sin proyectar el comportamiento futuro.
+   * *Con más tiempo (Roadmap):* Como en la capa raw ya tenemos almacenados los **10 años de series históricas trimestrales de ENACOM (2014 a 2024)**, el siguiente paso de valor sería entrenar un modelo predictivo de series de tiempo (como Prophet o ARIMA) para proyectar el crecimiento del IADH a 24 meses. Esto permitiría al área de Operaciones anticipar la saturación de los Centros de Distribución y dimensionar flotas antes de que la demanda e-commerce colapse la red.
 
 ---
 
