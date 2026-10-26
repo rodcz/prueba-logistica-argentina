@@ -608,6 +608,22 @@ def generate_html(data, output_path):
             <div class="badge-header">Data Engineering & Analytics Architecture</div>
             <h1>Informe Ejecutivo de Demanda Territorial y Logística</h1>
             <p class="subtitle">Evaluación de densidad poblacional, conectividad digital y zonificación estratégica para el diseño de redes logísticas en Argentina (PostgreSQL 18 + dbt + Airflow).</p>
+            
+            <!-- Metadata & Lineage de Código y Consulta Generadora -->
+            <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 10px 16px; margin-top: 16px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.82rem; color: #cbd5e1;">
+                <div>
+                    <span style="color: #93c5fd; font-weight: 600;">⚙️ Orquestador Airflow:</span>
+                    <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: #f8fafc;">dags/dag_demanda_logistica.py</code>
+                </div>
+                <div>
+                    <span style="color: #93c5fd; font-weight: 600;">📊 Modelo Mart SQL:</span>
+                    <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: #f8fafc;">dbt_project/models/marts/rep_resumen_ejecutivo.sql</code>
+                </div>
+                <div>
+                    <span style="color: #93c5fd; font-weight: 600;">⚡ Script Generador:</span>
+                    <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: #f8fafc;">scripts/generate_html_report.py</code>
+                </div>
+            </div>
         </div>
     </header>
 
