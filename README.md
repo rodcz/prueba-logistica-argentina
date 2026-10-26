@@ -98,3 +98,26 @@ Pipeline de datos automatizado y contenerizado para la consolidación, modelado 
 * **2. Análisis Estático (Snapshot) vs. Modelado Predictivo con Series de Tiempo:**
   * *Limitación actual:* El modelo actual es descriptivo: evalúa la foto estática del último trimestre disponible de ENACOM y del padrón 2024.
   * *Con más tiempo:* Como la capa raw ya cuenta con los **10 años de series históricas trimestrales de ENACOM (2014-2024)**, entrenar un modelo de series de tiempo (Prophet o ARIMA) para proyectar el crecimiento del IADH a 24 meses y anticipar la saturación de Centros de Distribución.
+
+---
+
+## 6. Declaración de Uso de Inteligencia Artificial y Validación
+
+Se utilizó un agente de IA como asistente de ingeniería de datos (*pair programming*) y un subagente especializado de aseguramiento de calidad (**`qa-data-validator`**) para auditar cada hito técnico antes de su integración.
+
+### ¿Para qué se usó?
+1. **Construcción Integral del Pipeline ELT:** Desarrollo de scripts de extracción en Python (`extract_sources.py`), orquestación con Apache Airflow 2.10 (`dag_demanda_logistica.py`), modelos dbt Core (capas Staging, Intermediate y Marts) y entorno Docker Compose.
+2. **Detección y Fix Demográfico de CABA:** Identificación de la omisión comunal en el comodín `02000` de RENAPER (3,4M hab) y diseño de la fórmula de escalamiento censal proporcional.
+3. **Resolución de Homónimos Territoriales:** Detección de colisiones potenciales entre departamentos con el mismo nombre en distintas provincias (ej. *Capital* o *San Martín*) e implementación de la agrupación cuádruple compuesta en Pandas (`['departamento_id', 'nombre_departamento', 'provincia_id', 'nombre_provincia']`).
+4. **Preservación Cartográfica de Códigos INDEC:** Detección del truncamiento de ceros a la izquierda (`02001` → `2001`) y forzado de tipado estricto `VARCHAR(5)` con `lpad` en la capa Staging de dbt para garantizar los cruces espaciales.
+5. **Aislamiento Operativo de Soberanía (Antártida y Malvinas):** Creación de banderas booleanas (`es_territorio_continental = false`, `requiere_logistica_especial = true`) para cuantificar los territorios especiales sin excluirlos de la base nacional.
+6. **Modelado Star Schema, Métrica IADH y Dashboard:** Modelado de `dim_departamento` y `fct_demanda_logistica` con pre-cálculo de funciones de ventana (Rankings y curva de Pareto 80/20), formulación del IADH y maquetación del reporte interactivo HTML con Leaflet.js.
+
+### ¿Cómo se validó lo que produjo?
+1. **Auditoría del Agente `qa-data-validator` y Ejecución Real:** El subagente especializado de QA validó la sintaxis con `docker compose config`, ejecutó el DAG de 6 tareas de Airflow de punta a punta y auditó los logs de los contenedores (`docker ps`, Airflow y PostgreSQL), confirmando cero fallas de dependencias.
+2. **Cruce contra Documento Primario Oficial INDEC (Pág. 25):** Se contrastó fila por fila contra el PDF del Censo 2022 (Cuadro 1.1, Pág. 25). Se validó por SQL que la distribución comunal conserve las participaciones censales a 4 decimales y sume exactamente **3.400.592 habitantes** (0 error residual contable).
+3. **Test de Unicidad dbt y Consulta Anti-Duplicados:** El agente de QA corrió el test `unique` sobre `cod_departamento` en dbt y una query de verificación de duplicados (`HAVING COUNT(*) > 1`), certificando que los 529 departamentos mantienen identidad única sin fusiones erróneas.
+4. **Test de Integridad Referencial `relationships` y Cobertura IGN:** Se ejecutó el test foráneo de dbt cruzando hechos con dimensiones. Se comprobó que el 100% de los 529 departamentos coincidan con la cartografía del IGN con **0 nulos en coordenadas de latitud y longitud**.
+5. **Control Contable y Test `test_suma_poblacion_100_pct`:** Se auditó por SQL que exactamente 147 habitantes (17 de Malvinas y 130 de Antártida, el 0.00031% del país) tengan las banderas activas, y que el test contable de dbt apruebe confirmando que el **100.0000% de la población (46.877.222 hab)** esté contemplada.
+6. **Benchmarking de Latencia y Verificación en Navegador:** Se validó que la vista `rep_resumen_ejecutivo` responda en **menos de 2 milisegundos** sin recalcular ventanas al vuelo. Se inspeccionó el archivo HTML en navegador validando el renderizado de los 529 marcadores y métricas sin errores de consola.
+
