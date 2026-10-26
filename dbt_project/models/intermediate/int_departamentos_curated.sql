@@ -28,21 +28,22 @@ joined as (
         
         -- Asignación de población censal oficial con resolución de comunas de CABA y casos especiales
         case
-            when ign.cod_departamento = '02007' then 236681
-            when ign.cod_departamento = '02014' then 176151
-            when ign.cod_departamento = '02021' then 213897
-            when ign.cod_departamento = '02028' then 249603
-            when ign.cod_departamento = '02035' then 211517
-            when ign.cod_departamento = '02042' then 196214
-            when ign.cod_departamento = '02049' then 263546
-            when ign.cod_departamento = '02056' then 222739
-            when ign.cod_departamento = '02063' then 186012
-            when ign.cod_departamento = '02070' then 188393
-            when ign.cod_departamento = '02077' then 222739
-            when ign.cod_departamento = '02084' then 258105
-            when ign.cod_departamento = '02091' then 288030
-            when ign.cod_departamento = '02098' then 271027
-            when ign.cod_departamento = '02105' then 215938
+            -- Calibración proporcional estricta: Censo INDEC 2022 (Pág. 25) escalado sobre padrón RENAPER 2024
+            when ign.cod_departamento = '02007' then 243526
+            when ign.cod_departamento = '02014' then 176086
+            when ign.cod_departamento = '02021' then 213772
+            when ign.cod_departamento = '02028' then 249720
+            when ign.cod_departamento = '02035' then 211627
+            when ign.cod_departamento = '02042' then 221182
+            when ign.cod_departamento = '02049' then 235184
+            when ign.cod_departamento = '02056' then 222625
+            when ign.cod_departamento = '02063' then 184167
+            when ign.cod_departamento = '02070' then 188460
+            when ign.cod_departamento = '02077' then 222880
+            when ign.cod_departamento = '02084' then 258050
+            when ign.cod_departamento = '02091' then 288004
+            when ign.cod_departamento = '02098' then 270847
+            when ign.cod_departamento = '02105' then 214462
             when ign.cod_departamento = '94028' then 130
             when ign.cod_departamento = '94021' then 17
             when ign.cod_departamento = '06218' then 33649
