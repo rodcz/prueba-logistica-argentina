@@ -51,7 +51,7 @@ joined as (
             else coalesce(indec.poblacion_total, 0)
         end as poblacion,
 
-        -- Banderas operativas territoriales inspiradas en zonificación Belcorp
+        -- Banderas operativas territoriales inspiradas en zonificación logística estratégica
         case
             when ign.cod_departamento in ('94028', '94021') then false
             else true

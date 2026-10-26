@@ -63,7 +63,7 @@ with DAG(
         bash_command='python /opt/scripts/extract_sources.py',
     )
 
-    # 3. dbt Seed (Zonificación macro-regional Belcorp)
+    # 3. dbt Seed (Zonificación macro-regional estratégica)
     t2_dbt_seed = BashOperator(
         task_id='dbt_seed_zonificacion',
         bash_command='dbt seed --project-dir /opt/dbt --profiles-dir /opt/dbt --full-refresh',
