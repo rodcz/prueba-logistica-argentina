@@ -1252,36 +1252,61 @@
             </div>
         </div>
 
-        <!-- SECCIÓN 6: AUDITORÍA DE CALIDAD Y COMPLETITUD -->
+        <!-- SECCIÓN 6: AUDITORÍA DE CONFIABILIDAD, COMPLETITUD Y QUÉ QUEDÓ AFUERA -->
         <div class="section-card" style="border: 1px solid #e2e8f0; background: #fafafa;">
             <div class="section-header">
                 <div class="section-title">
-                    ✅ <span>Certificación de Calidad y Completitud de Datos</span>
+                    🛡️ <span>Confiabilidad, Calidad y Auditoría de Alcance</span>
                 </div>
-                <span class="section-badge" style="background: #dcfce7; color: #15803d;">Auditoría 100% Exitosa</span>
+                <span class="section-badge" style="background: #dcfce7; color: #15803d;">Auditoría 100% Exitosa &bull; 14/14 Tests PASS</span>
             </div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-                <div style="padding: 12px; background: white; border-radius: 8px; border: 1px solid #e2e8f0;">
-                    <div style="font-size: 0.8rem; color: #64748b;">Cobertura Departamental</div>
-                    <div style="font-size: 1.25rem; font-weight: 700; color: #0f172a;">529 de 529 (100%)</div>
-                    <div style="font-size: 0.75rem; color: #16a34a;">0 departamentos faltantes</div>
+            <p style="margin-bottom: 20px; color: var(--gray-600);">
+                Métricas cuantitativas de completitud territorial, exactitud y consistencia contable, junto con la delimitación explícita de qué aspectos y territorios quedaron fuera del alcance regular.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-bottom: 24px;">
+                <div style="padding: 14px; background: white; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <div style="font-size: 0.8rem; color: #64748b; font-weight: 600; text-transform: uppercase;">1. Completitud Territorial</div>
+                    <div style="font-size: 1.35rem; font-weight: 800; color: #0f172a;">529 de 529 (100.0%)</div>
+                    <div style="font-size: 0.78rem; color: #16a34a; margin-top: 4px;">24 jurisdicciones &bull; 0 faltantes</div>
                 </div>
-                <div style="padding: 12px; background: white; border-radius: 8px; border: 1px solid #e2e8f0;">
-                    <div style="font-size: 0.8rem; color: #64748b;">Nulos en Coordenadas</div>
-                    <div style="font-size: 1.25rem; font-weight: 700; color: #0f172a;">0 Registros Nulos</div>
-                    <div style="font-size: 0.75rem; color: #16a34a;">Latitud/Longitud verificadas</div>
+                <div style="padding: 14px; background: white; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <div style="font-size: 0.8rem; color: #64748b; font-weight: 600; text-transform: uppercase;">2. Completitud Demográfica</div>
+                    <div style="font-size: 1.35rem; font-weight: 800; color: #0f172a;">46.877.222 hab. (100%)</div>
+                    <div style="font-size: 0.78rem; color: #16a34a; margin-top: 4px;">Control contable 1:1 padrón nacional</div>
                 </div>
-                <div style="padding: 12px; background: white; border-radius: 8px; border: 1px solid #e2e8f0;">
-                    <div style="font-size: 0.8rem; color: #64748b;">Códigos INDEC (5 Dígitos)</div>
-                    <div style="font-size: 1.25rem; font-weight: 700; color: #0f172a;">VARCHAR(5) Estricto</div>
-                    <div style="font-size: 0.75rem; color: #16a34a;">Ceros iniciales preservados</div>
+                <div style="padding: 14px; background: white; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <div style="font-size: 0.8rem; color: #64748b; font-weight: 600; text-transform: uppercase;">3. Georreferenciación IGN</div>
+                    <div style="font-size: 1.35rem; font-weight: 800; color: #0f172a;">0 Nulos (100.0%)</div>
+                    <div style="font-size: 0.78rem; color: #16a34a; margin-top: 4px;">529 pares de lat/lon oficiales</div>
                 </div>
-                <div style="padding: 12px; background: white; border-radius: 8px; border: 1px solid #e2e8f0;">
-                    <div style="font-size: 0.8rem; color: #64748b;">Suma de Porcentajes</div>
-                    <div style="font-size: 1.25rem; font-weight: 700; color: #0f172a;">100.0% Exacto</div>
-                    <div style="font-size: 0.75rem; color: #16a34a;">Test unitario dbt verificado</div>
+                <div style="padding: 14px; background: white; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <div style="font-size: 0.8rem; color: #64748b; font-weight: 600; text-transform: uppercase;">4. Tests dbt Automatizados</div>
+                    <div style="font-size: 1.35rem; font-weight: 800; color: #0f172a;">14 de 14 Aprobados</div>
+                    <div style="font-size: 0.78rem; color: #16a34a; margin-top: 4px;">100% pass rate &bull; Calidad fail-fast</div>
                 </div>
+            </div>
+
+            <!-- SUBPANEL: QUÉ QUEDÓ AFUERA -->
+            <div style="background: #fffbeb; border: 1px solid #fef3c7; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 18px;">
+                <h4 style="color: #92400e; font-size: 0.98rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <span>⚠️</span> Especificación Cuantitativa: ¿Qué Quedó Afuera del Alcance Regular?
+                </h4>
+                <ul style="padding-left: 20px; font-size: 0.88rem; color: #78350f; line-height: 1.6;">
+                    <li style="margin-bottom: 6px;">
+                        <strong>Exclusión de Red Logística Terrestre Regular (147 habitantes / 0.00031% del país):</strong>
+                        Los departamentos <em>Islas del Atlántico Sur</em> (Cód. <code>94021</code>, 17 hab) y <em>Antártida Argentina</em> (Cód. <code>94028</code>, 130 hab) quedaron excluidos de la red troncal terrestre y fueron marcados en el modelo con los flags <code>es_territorio_continental = false</code> y <code>requiere_logistica_especial = true</code> debido a aislamiento insular, conflicto de soberanía y necesidad de puentes aéreos y rompehielos militares.
+                    </li>
+                    <li style="margin-bottom: 6px;">
+                        <strong>Granularidad Municipal de Conectividad (ENACOM):</strong>
+                        ENACOM publica la penetración de internet fija exclusivamente a nivel de <strong>24 jurisdicciones provinciales</strong>. Quedaron afuera las variaciones intradepartamentales y rurales (se asume tasa uniforme provincial al calcular el IADH).
+                    </li>
+                    <li>
+                        <strong>Topología de Red Vial y Ruteo de Carreteras:</strong>
+                        Se opera con distancias geodésicas y centroides oficiales del IGN; quedó afuera el grafo vial de Vialidad Nacional (distinción entre autopistas pavimentadas y caminos de ripio) y tiempos dinámicos de tránsito.
+                    </li>
+                </ul>
             </div>
         </div>
 
