@@ -53,3 +53,21 @@ models:
         tests:
           - unique
           - not_null
+
+seeds:
+  - name: seed_departamentos_regiones
+    description: "Catálogo maestro territorial de los 529 departamentos y comunas de Argentina. Construido a partir del marco geoestadístico del Censo Nacional 2022 (INDEC) y clasificado según el estándar de Macro-Regiones del MINCyT (Indicadores CTI) y de la Encuesta Permanente de Hogares (INDEC EPH)."
+    columns:
+      - name: cod_departamento
+        description: "Código unificado INDEC de 5 dígitos (2 prov + 3 depto)."
+        tests:
+          - unique
+          - not_null
+      - name: macro_region
+        description: "Macro-región estadística oficial (AMBA/CABA y GBA, Pampeana, Cuyo, NOA, NEA, Patagonia)."
+        tests:
+          - not_null
+      - name: es_amba
+        description: "Flag booleano que identifica si el departamento pertenece al Área Metropolitana de Buenos Aires (15 comunas de CABA + 38 partidos del conurbano)."
+        tests:
+          - not_null

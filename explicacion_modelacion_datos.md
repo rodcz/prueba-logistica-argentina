@@ -82,6 +82,21 @@ El pipeline implementa una arquitectura en tres capas desacopladas dentro del Da
 
 ---
 
+### D. `seed_departamentos_regiones` (Catálogo Maestro Territorial y Macro-Regiones)
+* **Grano:** 1 fila = 1 departamento o comuna (529 registros).
+* **Fuentes y Metodología de Construcción:**
+  1. **Marco Geoestadístico Censo 2022 (INDEC) + Georef (IGN):** Nomenclador oficial de 529 entidades territoriales de segundo orden con código INDEC unificado de 5 dígitos (`cod_departamento` = 2 dígitos de provincia + 3 dígitos de departamento), incluyendo las 15 comunas de CABA (`02001` a `02015`) y los 135 partidos de la Provincia de Buenos Aires (`06007` a `06891`).
+  2. **Estándar de Macro-Regiones (MINCyT / CTI e INDEC EPH):** Agrupación canónica en 6 macro-regiones del Estado Argentino:
+     * **CABA y GBA / AMBA:** 15 comunas de CABA + 38 partidos del Gran Buenos Aires (`es_amba = True`).
+     * **Cuyo:** Mendoza, San Juan y San Luis.
+     * **NEA:** Chaco, Corrientes, Formosa y Misiones.
+     * **NOA:** Catamarca, Jujuy, La Rioja, Salta, Santiago del Estero y Tucumán.
+     * **Pampeana:** Resto del interior de la Provincia de Buenos Aires (95 partidos), Córdoba, Entre Ríos, La Pampa y Santa Fe.
+     * **Patagonia:** Chubut, Neuquén, Río Negro, Santa Cruz y Tierra del Fuego, Antártida e Islas del Atlántico Sur.
+* **Justificación de dbt Seed:** La Provincia de Buenos Aires (`06`) se encuentra dividida entre el conurbano metropolitano (`AMBA`) y el interior agropecuario (`Pampeana`). Por ende, una macro-región no puede inferirse a nivel de provincia (`06`); requiere una dimensión puente a nivel departamental (`VARCHAR(5)`) versionada en dbt bajo control de versiones (`git`).
+
+---
+
 ## 3. Relaciones e Integridad Referencial
 
 ```

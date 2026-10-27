@@ -37,20 +37,23 @@ Pipeline de datos automatizado y contenerizado para la consolidación, modelado 
 ## 2. Qué fuentes usaste y por qué
 
 * **Instituto Geográfico Nacional (IGN) - División Política:**
-  * *Dataset:* Centroides y geometrías oficiales de los 529 departamentos del país.
-  * *Por qué:* Es la autoridad cartográfica oficial de la República Argentina. Proporciona coordenadas geodésicas (latitud y longitud) indispensables para la georreferenciación y el análisis territorial de cobertura logística.
+  * *Dataset:* [API Georef (Documentación)](https://datosgobar.github.io/georef-ar-api/) | [Descarga directa CSV](https://apis.datos.gob.ar/georef/api/v2.0/departamentos.csv).
+  * *Por qué:* Es la autoridad cartográfica oficial de la República Argentina. Proporciona centroides geodésicos (latitud y longitud) indispensables para la georreferenciación y el análisis territorial de cobertura logística de los 529 departamentos.
 * **RENAPER (Agosto 2024) - Población Identificada por Departamento:**
-  * *Dataset:* Padrón de 46.877.222 personas con DNI registrado a nivel departamental.
-  * *Por qué:* Representa la fuente de población más actualizada y accesible en un único archivo CSV estructurado (48.983 registros), permitiendo una ingesta automatizada, repetible y sin scraping frágil.
-* **INDEC - Censo Nacional 2022 (Página 25, Cuadro 1.1):**
-  * *Dataset:* Distribución poblacional por departamento y comuna de CABA.
-  * *Por qué:* RENAPER registra a la Ciudad Autónoma de Buenos Aires bajo un único código comodín (`02000`). El Censo 2022 aportó la distribución porcentual oficial para calibrar las 15 comunas porteñas de forma matemáticamente exacta.
+  * *Dataset:* [Portal Estadístico de Población](https://estadisticas.renaper.gob.ar/app_poblacion/) | [Descarga directa CSV](https://datosabiertos.renaper.gob.ar/poblacion_identificada_departamento_agosto_2024.csv).
+  * *Por qué:* Padrón de 46.877.222 personas con DNI registrado a nivel departamental. Representa la fuente de población más actualizada y accesible en un único archivo estructurado (48.983 registros), permitiendo una ingesta automatizada, repetible y sin scraping frágil.
+* **INDEC - Censo Nacional 2022 (Población y Nomenclador de 529 Departamentos):**
+  * *Dataset:* [Portal Temático Censo 2022](https://www.indec.gob.ar/indec/web/Nivel4-Tema-2-41-165) | [Resultados Definitivos - Cuadro 1.1, Pág. 25 (PDF)](https://www.indec.gob.ar/ftp/cuadros/poblacion/censo2022_indicadores_demograficos.pdf).
+  * *Por qué:* Establece el marco geoestadístico oficial de 529 entidades (15 comunas de CABA + 135 partidos de PBA + 379 departamentos del interior) con código INDEC de 5 dígitos. Dado que RENAPER agrupa a CABA bajo el código comodín `02000` (3,4M hab), el Censo 2022 aportó la distribución porcentual oficial para calibrar las 15 comunas porteñas de forma matemáticamente exacta con 0 error contable residual.
 * **ENACOM - Conectividad e Internet Fijo (2014-2024):**
-  * *Dataset:* Serie histórica trimestral de accesos y penetración de internet por cada 100 hogares a nivel provincial.
-  * *Por qué:* Es el ente regulador oficial de telecomunicaciones. Permite formular el Índice de Alcance Digital de Hogares (IADH) para identificar el potencial del comercio electrónico.
+  * *Dataset:* [Tablero de Penetración Provincial](https://indicadores.enacom.gob.ar/DatosAbiertos/Internet/penetracion-provincias) | [Descarga directa CSV](https://indicadores.enacom.gob.ar/Files/DatosAbiertos/internet_accesos_penetracion_provincias.csv).
+  * *Por qué:* Es el ente regulador oficial de telecomunicaciones. Su serie trimestral de accesos y penetración de internet por cada 100 hogares a nivel provincial permite formular el Índice de Alcance Digital de Hogares (IADH) para identificar el potencial del comercio electrónico.
 * **DAMI / AMBA (Subsecretaría de Asuntos Municipales):**
-  * *Dataset:* Delimitación oficial del Área Metropolitana de Buenos Aires (CABA + 40 municipios).
-  * *Por qué:* Es la delimitación geográfica formal para categorizar el nodo de mayor concentración demográfica y volumen logístico del país.
+  * *Dataset:* [Delimitación Oficial del AMBA (CABA + 40 municipios)](https://www.argentina.gob.ar/noticias/sabias-que-es-el-amba).
+  * *Por qué:* Delimitación geográfica formal para categorizar el nodo de mayor concentración demográfica y volumen logístico del país.
+* **MINCyT (Indicadores CTI) / INDEC (EPH) - Macro-Regiones Estadísticas:**
+  * *Dataset:* [Estándar de Macro-Regiones del Estado Argentino](https://www.argentina.gob.ar/ciencia/indicadores-cti/datasets/dataset-empresas-innovadoras-en-productos-innovacion-y-region).
+  * *Por qué:* Define el estándar canónico de 6 macro-regiones del país (CABA y GBA, Pampeana, Cuyo, NOA, NEA y Patagonia). Permite desacoplar a nivel de departamento la heterogeneidad de la Provincia de Buenos Aires (diferenciando los 38 partidos del Conurbano/AMBA del interior bonaerense pampeano) mediante la semilla `seed_departamentos_regiones.csv`.
 
 ---
 
