@@ -77,7 +77,7 @@ Pipeline de datos automatizado y contenerizado para la consolidación, modelado 
 ## 4. Qué tan confiable es el resultado y cómo lo medís
 
 ### Cómo se mide (Métricas Cuantitativas y Quality Gates)
-* **14 de 14 tests automatizados de dbt aprobados (100% pass rate):** Validaciones de unicidad, no nulidad, llaves foráneas y consistencia ejecutadas en 0.8s con política *fail-fast*.
+* **18 de 18 tests automatizados de dbt aprobados (100% pass rate):** Validaciones de unicidad, no nulidad, llaves foráneas y consistencia ejecutadas en ~1.4s con política *fail-fast*.
 * **100% de Cobertura Territorial:** 529 de 529 departamentos cubiertos y 24 de 24 jurisdicciones analizadas (0 faltantes).
 * **100% de Georreferenciación:** 0 registros nulos en coordenadas geodésicas oficiales del IGN.
 * **Control de Integridad Contable 1:1:** Suma de participaciones relativas = **100.0000% exacto** y suma poblacional nacional = **46.877.222 habitantes**.
